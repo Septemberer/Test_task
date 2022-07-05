@@ -43,7 +43,7 @@ contract Farming200 {
         uint256 days200 = 60 * 60 * 24 * 200; // how many seconds in 200 days
 
         require(
-            user_info_time[user] + days200 >= block.timestamp,
+            user_info_time[user] + days200 <= block.timestamp,
             "200 days have not passed"
         );
 
