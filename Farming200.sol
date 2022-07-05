@@ -23,8 +23,9 @@ contract Farming200 {
         user_info_amount[user] = _amount;
         user_info_time[user] = block.timestamp;
         reserve += _amount;
-
-        payable(user).transfer(msg.value - _amount); // We return the surplus
+        if (msg.value > _amount) {
+            payable(user).transfer(msg.value - _amount); // We return the surplus
+        }
     }
 
     // Will issue a reward to the user only if 200 days have passed since the deposit
